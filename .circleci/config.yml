@@ -6,7 +6,7 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
      - checkout
-     - run: echo " Hello << CIRCLE_BRANCH >> "
+     - run: echo " Hello << CBRANCH >> "
   print_world:
     docker:
       - image: circleci/node:13.8.0
