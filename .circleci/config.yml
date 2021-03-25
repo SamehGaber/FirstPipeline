@@ -6,13 +6,20 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
      - checkout
-     - run: echo " Hello << CBRANCH >> "
+     - run: echo " Hello  "
   print_world:
     docker:
       - image: circleci/node:13.8.0
     steps:
      - checkout
      - run: echo " World !! pipleline is << pipeline.id >>"
+
+  myJob:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+     - checkout
+     - run: echo " my name is $Name "
 
 # Use a package of configuration called an orb.
 
