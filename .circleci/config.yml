@@ -19,7 +19,9 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
      - checkout
-     - run: echo $Name
+     - run:
+        command: |
+          echo $Name
 
 # Use a package of configuration called an orb.
 
