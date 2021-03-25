@@ -19,7 +19,7 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
      - checkout
-     - run: echo " my name is $Name "
+     - run: echo "my name is" $Name
 
 # Use a package of configuration called an orb.
 
