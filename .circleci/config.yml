@@ -6,7 +6,7 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
      - checkout
-     - run: return 1
+     - run: retrn 1
      - run:
         name: condition
         command: echo " ops ! we failed"
