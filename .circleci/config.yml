@@ -4,11 +4,10 @@ commands:
   print_pipeline_id:
     description: "A very simple command printing pipeline id "
     parameters:
-      to:
+      id:
         type: string
-        default: "<< pipeline.id >>"
     steps:
-      - run: echo Hello << parameters.to >>
+      - run: echo Hello << parameters.id >>
 jobs:
   myjob:
     docker:
@@ -16,7 +15,7 @@ jobs:
     steps:
      - checkout
      - print_pipeline_id:
-        to: "<<pipeline.id>>"
+        id: "<<pipeline.id>>"
 
 # Use a package of configuration called an orb.
 
