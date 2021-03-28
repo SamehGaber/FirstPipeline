@@ -8,9 +8,9 @@ jobs:
      - checkout
      - run: return 1
      - run:
-      name: condition
-      command: echo " ops ! we failed"
-      when: on_fail
+        name: condition
+        command: echo " ops ! we failed"
+        when: on_fail
 # Use a package of configuration called an orb.
 
 # Orchestrate or schedule a set of jobs
