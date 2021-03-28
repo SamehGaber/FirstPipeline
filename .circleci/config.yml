@@ -15,8 +15,9 @@ jobs:
     docker:
       - image: circleci/node:13.8.0
     steps:
+     - checkout
      - attach_workspace:
-       at: ~/
+        at: ~/
      - run: cat ~/output.txt
 
 # Use a package of configuration called an orb.
