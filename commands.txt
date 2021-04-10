@@ -8,3 +8,4 @@ aws ec2 describe-instances \
 
 
 ansible-playbook xxx.yml -i inventory --private-key yyyy.pem
+test
