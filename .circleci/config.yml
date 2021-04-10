@@ -8,6 +8,16 @@ jobs:
      - checkout
      - run:  aws cloudformation create-stack --stack-name test --template-body file://template.yml   --region=us-west-2
 
+  execute_playbook:
+    docker:
+      - image: python:3.7-alpine3.11
+    steps:
+     - checkout
+     - add_ssh_keys:
+          fingerprints:
+            - "d8:cb:68:a2:f9:79:ca:c6:e6:23:bc:f5:18:6c:4f:f3"
+     - run:  ansible-playbook main-remote.yml -i inventory 
+
 # Use a package of configuration called an orb.
 
 # Orchestrate or schedule a set of jobs
@@ -17,4 +27,5 @@ workflows:
     # Run the welcome/run job in its own container
     jobs:
       - create_infrastructure
+      - execute_playbook
 
