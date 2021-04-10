@@ -6,7 +6,7 @@ jobs:
       - image: amazon/aws-cli
     steps:
      - checkout
-     - run: sudo aws cloudformation create-stack --stack-name test --template-body file://template.yml   --region=us-west-2
+     - run:  aws cloudformation create-stack --stack-name test --template-body file://template.yml   --region=us-west-2
 
 # Use a package of configuration called an orb.
 
