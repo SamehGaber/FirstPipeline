@@ -10,14 +10,20 @@ jobs:
 
   execute_playbook:
     docker:
-      - image: circleci/python:3.7-alpine3.11
+      - image: python:3.7-alpine3.11
     steps:
      - checkout
      - add_ssh_keys:
           fingerprints:
             - "d8:cb:68:a2:f9:79:ca:c6:e6:23:bc:f5:18:6c:4f:f3"
-     - run: apt-get install ansible 
-     - run: ansible-playbook main-remote.yml -i inventory 
+     - run: 
+          name: install dependencies 
+          command: | 
+          apk add --update ansible 
+     - run: 
+          name: Configure server
+          command: |
+            ansible-playbook main-remote.yml -i inventory 
 
 # Use a package of configuration called an orb.
 
