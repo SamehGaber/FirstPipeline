@@ -18,7 +18,15 @@ jobs:
         name: creating infra
         command:  aws cloudformation create-stack --stack-name test --template-body file://template.yml   --region=us-west-2  
      - destroy_environments
-
+  simulate-error:
+    docker:
+      - image: alpine:latest
+    steps:
+     - checkout
+     - run: 
+        name: simulate error
+        command:  exit 1
+     - destroy_environments
 
   smoke_test:
     docker:
