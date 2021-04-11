@@ -7,6 +7,20 @@ jobs:
     steps:
      - checkout
      - run:  aws cloudformation create-stack --stack-name test --template-body file://template.yml   --region=us-west-2
+  smoke_test:
+    docker:
+     - image: alpine:latest
+    steps:
+     - checkout
+     - run:
+       name: smoke test curl
+       command: |
+          if curl -s --head "https://google.com" 
+          then
+            echo "It worked!"
+          else
+            echo "It failed"
+          fi         
 
   execute_playbook:
     docker:
@@ -33,5 +47,5 @@ workflows:
   welcome:
     # Run the welcome/run job in its own container
     jobs:
-      - execute_playbook
+      - smoke_test
 
