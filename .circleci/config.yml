@@ -20,7 +20,7 @@ jobs:
      - destroy_environments
   simulate-error:
     docker:
-      - image: alpine:latest
+      - image: amazon/aws-cli
     steps:
      - checkout
      - run: 
