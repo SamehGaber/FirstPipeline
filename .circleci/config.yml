@@ -15,12 +15,8 @@ jobs:
      - run:
        name: smoke test curl
        command: |
-          if curl -s --head "https://google.com" 
-          then
-            echo "It worked!"
-          else
-            echo "It failed"
-          fi         
+           curl -s --head "https://google.com" 
+                 
 
   execute_playbook:
     docker:
