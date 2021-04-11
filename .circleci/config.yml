@@ -4,9 +4,9 @@ commands:
  destroy_environments:
    steps:
     - run:
-      name: rolling back
-      command: aws cloudformation delete-stack --stack-name test --template-body file://template.yml --region=us-west-2
-      when: on_fail
+       name: rolling back
+       command: aws cloudformation delete-stack --stack-name test --template-body file://template.yml --region=us-west-2
+       when: on_fail
 jobs:
   destroy_environments:
     docker:
