@@ -12,7 +12,7 @@ jobs:
      - image: alpine:latest
     steps:
      - checkout
-     - run :  apt-get install curl
+     - run :  apk --no-cache add curl
      - run:
         name: smoke test curl
         command: |
