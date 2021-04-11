@@ -17,7 +17,7 @@ jobs:
 
   simulate_error:
     docker:
-      - image: alpine:latest
+      - image: amazon/aws-cli
     steps:
      - checkout
      - run:  return 1 # to simulate error
