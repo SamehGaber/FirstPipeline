@@ -13,9 +13,9 @@ jobs:
     steps:
      - checkout
      - run:
-       name: smoke test curl
-       command: |
-           curl -s --head "https://google.com" 
+        name: smoke test curl
+        command: |
+            curl -s --head "https://google.com" 
                  
 
   execute_playbook:
