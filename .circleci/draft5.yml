@@ -1,0 +1,6 @@
+  destroy_environments:
+    docker:
+      - image: amazon/aws-cli
+    steps:
+     - checkout
+     - destroy_environments

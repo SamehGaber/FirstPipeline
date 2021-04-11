@@ -8,12 +8,6 @@ commands:
        command: aws cloudformation delete-stack --stack-name test
        when: on_fail
 jobs:
-  destroy_environments:
-    docker:
-      - image: amazon/aws-cli
-    steps:
-     - checkout
-     - destroy_environments
 
   create_infrastructure:
     docker:
