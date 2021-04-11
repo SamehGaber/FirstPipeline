@@ -72,6 +72,6 @@ workflows:
     jobs:
       - create_infrastructure
       - simulate-error
-        requires:
-          - create_infrastructure
+         requires:
+           - create_infrastructure
 
