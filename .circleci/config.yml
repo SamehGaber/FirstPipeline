@@ -12,6 +12,7 @@ jobs:
      - image: alpine:latest
     steps:
      - checkout
+     - run : sudo apt-get install curl
      - run:
         name: smoke test curl
         command: |
