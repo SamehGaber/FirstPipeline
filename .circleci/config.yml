@@ -6,7 +6,11 @@ jobs:
       - image: amazon/aws-cli
     steps:
      - checkout
-     - run:  aws cloudformation delete-stack --stack-name test --template-body file://template.yml   --region=us-west-2
+     - run: 
+        name: destorying environment
+        command:  aws cloudformation delete-stack --stack-name test --template-body file://template.yml   --region=us-west-2
+        when: on_fail
+
   create_infrastructure:
     docker:
       - image: amazon/aws-cli
@@ -15,7 +19,6 @@ jobs:
      - run:  aws cloudformation create-stack --stack-name test --template-body file://template.yml   --region=us-west-2
      - run:  return 1 # to simulate error
      - destroy_environments
-       when: on_fail
 
   simulate_error:
     docker:
@@ -69,5 +72,5 @@ workflows:
   welcome:
     # Run the welcome/run job in its own container
     jobs:
-      - destroy_environments
+      - create_infrastructure
 
