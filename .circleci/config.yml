@@ -16,7 +16,9 @@ jobs:
       - image: amazon/aws-cli
     steps:
      - checkout
-     - run:  aws cloudformation create-stack --stack-name test --template-body file://template.yml   --region=us-west-2
+     - run: 
+        name: creating infra
+        command:  aws cloudformation create-stack --stack-name test --template-body file://template.yml   --region=us-west-2  
      - run:  return 1 # to simulate error
      - destroy_environments
 
