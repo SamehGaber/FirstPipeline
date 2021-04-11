@@ -7,6 +7,24 @@ jobs:
     steps:
      - checkout
      - run:  aws cloudformation create-stack --stack-name test --template-body file://template.yml   --region=us-west-2
+
+  destroy_environments:
+    docker:
+      - image: amazon/aws-cli
+    steps:
+     - checkout
+     - run:  aws cloudformation delete-stack --stack-name test --template-body file://template.yml   --region=us-west-2
+
+  simulate_error:
+    docker:
+      - image: alpine:latest
+    steps:
+     - checkout
+     - run:  return 1 # to simulate error
+     - destroy_environments
+       when: on_fail
+
+
   smoke_test:
     docker:
      - image: alpine:latest
@@ -49,5 +67,6 @@ workflows:
   welcome:
     # Run the welcome/run job in its own container
     jobs:
-      - create_infrastructure
+      - destroy_environments
+      - simulate_error
 
