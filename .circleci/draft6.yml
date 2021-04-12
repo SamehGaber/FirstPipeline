@@ -8,19 +8,6 @@ commands:
        command: aws cloudformation delete-stack --stack-name test
        when: on_fail
 jobs:
-  create_and_deploy_front_end:
-    docker:
-      - image: amazon/aws-cli
-    steps:
-     - checkout
-     - run: 
-        name: creating s3 bucket
-        command: | 
-                  aws cloudformation deploy \
-                  --template-file bucket.yml \
-                  --stack-name "${CIRCLE_WORKFLOW_ID:0:7}" \ # ${CIRCLE_WORKFLOW_ID:0:7} takes the first 7 chars of the variable CIRCLE_CI_WORKFLOW_ID
-                  --parameter-overrides PipelineID="${CIRCLE_WORKFLOW_ID:0:7}"
-                  --region=us-west-2 
 
   create_infrastructure:
     docker:
@@ -83,5 +70,8 @@ workflows:
   welcome:
     # Run the welcome/run job in its own container
     jobs:
-      - create_and_deploy_front_end
+      - create_infrastructure
+      - simulate-error:
+         requires:
+           - create_infrastructure
 
