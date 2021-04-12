@@ -15,7 +15,7 @@ jobs:
      - checkout
      - run: 
         name: creating s3 bucket
-        command:   aws cloudformation create-stack --template-file bucket.yml  --stack-name "${CIRCLE_WORKFLOW_ID:0:7}" --parameter-overrides PipelineID="${CIRCLE_WORKFLOW_ID:0:7}"  --region=us-west-2
+        command:   aws cloudformation deploy --template-file bucket.yml  --stack-name test --parameter-overrides PipelineID=12321412 
 
   create_infrastructure:
     docker:
