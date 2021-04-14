@@ -14,13 +14,19 @@ jobs:
     steps:
      - checkout
      - run: echo "${CIRCLE_WORKFLOW_ID}"
-
+    
   create_and_deploy_front_end:
     docker:
       - image: amazon/aws-cli
     steps:
      - checkout
-     - run: aws cloudformation create-stack --stack-name backend"${CIRCLE_WORKFLOW_ID}" --template-body file://cloudfront.yml   --region=us-west-2  
+    # aws cloudformation create-stack --stack-name backend"${CIRCLE_WORKFLOW_ID}" --template-body file://cloudfront.yml   --region=us-west-2  
+     - run: | 
+       aws cloudformation deploy \
+          --template-file cloudfront.yml \
+          --stack-name production-distro \
+          --parameter-overrides PipelineID="${607848654241-circle}" \ # Name of the S3 bucket you created manually.
+          --tags project=udapeople
 
   create_infrastructure:
     docker:
