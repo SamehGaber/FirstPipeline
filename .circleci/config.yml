@@ -20,7 +20,11 @@ jobs:
       - image: amazon/aws-cli
     steps:
      - checkout
-     - run:  aws cloudformation deploy --template-file cloudfront.yml --stack-name backend
+     - run: | 
+          aws cloudformation deploy \   
+              --template-file cloudfront.yml \   
+              --stack-name "${CIRCLE_WORKFLOW_ID}" \   
+              --parameter-overrides NAME="${CIRCLE_WORKFLOW_ID}"
 
   create_infrastructure:
     docker:
