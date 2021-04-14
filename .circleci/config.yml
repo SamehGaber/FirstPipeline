@@ -20,10 +20,7 @@ jobs:
       - image: amazon/aws-cli
     steps:
      - checkout
-     - run:  |
-          aws cloudformation deploy \
-           --template-file ./bucket.yml \
-           --stack-name backend
+     - run:  aws cloudformation deploy --template-file ./bucket.yml --stack-name backend
 
   create_infrastructure:
     docker:
