@@ -22,7 +22,7 @@ jobs:
      - checkout
      - run:  |
           aws cloudformation deploy \
-           --template-file bucket.yml \
+           --template-file ./bucket.yml \
            --stack-name backend
 
   create_infrastructure:
