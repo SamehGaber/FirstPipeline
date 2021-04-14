@@ -28,6 +28,18 @@ jobs:
           --parameter-overrides PipelineID="${607848654241-circle}" \
           --tags project=udapeople
 
+  bucket_new:
+    docker:
+      - image: amazon/aws-cli
+    steps:
+     - checkout
+    # aws cloudformation create-stack --stack-name backend"${CIRCLE_WORKFLOW_ID}" --template-body file://cloudfront.yml   --region=us-west-2  
+     - run: | 
+        aws cloudformation deploy \
+          --template-file bucket.yml \
+          --stack-name "${CIRCLE_WORKFLOW_ID:0:7}" \
+          --parameter-overrides PipelineID="${CIRCLE_WORKFLOW_ID:0:7}" \       
+
   create_infrastructure:
     docker:
       - image: amazon/aws-cli
@@ -89,6 +101,6 @@ workflows:
   welcome:
     # Run the welcome/run job in its own container
     jobs:
-      - create_and_deploy_front_end
+      - bucket_new
 
 
