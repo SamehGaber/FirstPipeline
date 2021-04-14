@@ -22,8 +22,8 @@ jobs:
      - checkout
      - run:  |
           aws cloudformation deploy \
-          --template-file bucket.yml \
-          --stack-name backend-${CIRCLE_WORKFLOW_ID} 
+           --template-file bucket.yml \
+           --stack-name backend
 
   create_infrastructure:
     docker:
