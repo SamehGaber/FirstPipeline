@@ -22,7 +22,7 @@ jobs:
      - checkout
     # aws cloudformation create-stack --stack-name backend"${CIRCLE_WORKFLOW_ID}" --template-body file://cloudfront.yml   --region=us-west-2  
      - run: | 
-       aws cloudformation deploy \
+        aws cloudformation deploy \
           --template-file cloudfront.yml \
           --stack-name production-distro \
           --parameter-overrides PipelineID="${607848654241-circle}" \
