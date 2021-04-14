@@ -1,5 +1,5 @@
 Parameters:
-  PipelineID:
+  CIRCLE_WORKFLOW_ID:
     Description: Unique identifier.
     Type: String
 
@@ -16,7 +16,7 @@ Resources:
     Properties:
       DistributionConfig:
         Origins:
-          - DomainName: !Sub "${PipelineID}.s3.amazonaws.com"
+          - DomainName: !Sub "${CIRCLE_WORKFLOW_ID}.s3.amazonaws.com"
             Id: webpage
             S3OriginConfig:
               OriginAccessIdentity: !Sub "origin-access-identity/cloudfront/${CloudFrontOriginAccessIdentity}"
@@ -29,7 +29,7 @@ Resources:
           ViewerProtocolPolicy: allow-all
 
 Outputs:
-  PipelineID:
-    Value: !Sub ${PipelineID}
+  CIRCLE_WORKFLOW_ID:
+    Value: !Sub ${CIRCLE_WORKFLOW_ID}
     Export:
-      Name: PipelineID
+      Name: CIRCLE_WORKFLOW_ID
