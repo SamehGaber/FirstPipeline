@@ -25,7 +25,7 @@ jobs:
        aws cloudformation deploy \
           --template-file cloudfront.yml \
           --stack-name production-distro \
-          --parameter-overrides PipelineID="${607848654241-circle}" \ # Name of the S3 bucket you created manually.
+          --parameter-overrides PipelineID="${607848654241-circle}" \
           --tags project=udapeople
 
   create_infrastructure:
