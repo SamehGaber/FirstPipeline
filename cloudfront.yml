@@ -1,7 +1,4 @@
-Parameters:
-  PipelineID:
-    Description: Unique identifier.
-    Type: String
+
 
 Resources:
 
