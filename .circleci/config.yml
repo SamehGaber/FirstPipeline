@@ -7,7 +7,7 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
      - checkout
-     - run: echo "hello worlds" > ~/output.txt
+     - run: echo "hello worlds" > output.txt
      - persist_to_workspace:
         root: ~/
         paths: 
@@ -19,7 +19,7 @@ jobs:
      - checkout
      - attach_workspace:
         at: ~/
-     - run: cat ~/output.txt
+     - run: cat project/.circleci/sameh/output.txt
 
 # Use a package of configuration called an orb.
 
