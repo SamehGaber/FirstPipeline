@@ -19,7 +19,7 @@ jobs:
      - checkout
      - attach_workspace:
         at: ~/
-     - run: cat ~/home/sameh/test.txt
+     - run: cat ~/sameh/test.txt
 
 # Use a package of configuration called an orb.
 
