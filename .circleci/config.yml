@@ -19,7 +19,7 @@ jobs:
      - checkout
      - attach_workspace:
         at: ~/
-     - run: cat output.txt
+     - run: cat ~/output.txt
 
 # Use a package of configuration called an orb.
 
