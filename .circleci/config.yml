@@ -7,7 +7,7 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
      - checkout
-     - run: echo "hello worlds" 
+     - run: echo "hello worlds" > output
      - persist_to_workspace:
         root: ~/
         paths: 
