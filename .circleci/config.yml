@@ -19,7 +19,7 @@ jobs:
      - checkout
      - attach_workspace:
         at: ~/
-     - run: cat project/.circleci/sameh/output.txt
+     - run: cat ~/project/.circleci/sameh/output.txt
 
 # Use a package of configuration called an orb.
 
