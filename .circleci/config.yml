@@ -11,7 +11,7 @@ jobs:
      - persist_to_workspace:
         root: ~/
         paths: 
-         - home/sameh/test.txt
+         - home/.circleci/sameh/test.txt
   print_output_file:
     docker:
       - image: circleci/node:13.8.0
@@ -19,7 +19,7 @@ jobs:
      - checkout
      - attach_workspace:
         at: ~/
-     - run: cat ~/sameh/test.txt
+     - run: cat ~/home/.circleci/sameh/test.txt
 
 # Use a package of configuration called an orb.
 
